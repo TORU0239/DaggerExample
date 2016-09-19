@@ -1,41 +1,43 @@
 package io.toru.daggerexample.ui;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
-import javax.inject.Inject;
-
+import butterknife.BindView;
+import butterknife.OnClick;
 import io.toru.daggerexample.R;
-import io.toru.daggerexample.app.MyApplication;
-import io.toru.daggerexample.di.module.ToruModule;
+import io.toru.daggerexample.base.activity.BaseActivity;
+import io.toru.daggerexample.pattern.presenter.MainPresenter;
+import io.toru.daggerexample.pattern.presenter.MainPresenterImp;
+import io.toru.daggerexample.pattern.view.MainView;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends BaseActivity implements MainView{
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    @Inject
-    public NetworkApi api;
+    private MainPresenter mainPresenter;
 
-    @Inject
-    public Toru module;
+    @BindView(R.id.main_text)
+    TextView mainText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public int getLayoutID() {
+        return R.layout.activity_main;
+    }
 
-        ((MyApplication)getApplication()).getComponent().inject(this);
-        boolean isInjected = (api != null);
-        if(isInjected){
-            if(api.validateUser("Wonyoung", "Choi")){
-                Log.w(TAG, "onCreate: validated!! ");
-                module.testToru();
-            }
-        }
-        else{
-            Log.w(TAG, "onCreate: not injected");
-        }
+    @Override
+    public void initModel() {
+        mainPresenter = new MainPresenterImp(this);
+    }
+
+    @Override
+    public void onInitView() {
+        Log.w(TAG, "onInitView: ");
+        mainText.setText("18");
+    }
+
+    @OnClick(R.id.main_button)
+    public void onMainButtonClick(){
+        mainPresenter.onInitAction();
     }
 }
