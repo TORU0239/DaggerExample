@@ -30,7 +30,7 @@ public class MyApplication extends Application {
         return mainComponent;
     }
 
-    public static MyApplication getAppication(){
+    public static MyApplication getApplication(){
         return application;
     }
 }

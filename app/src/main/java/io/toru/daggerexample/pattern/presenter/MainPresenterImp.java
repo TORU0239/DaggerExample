@@ -24,7 +24,7 @@ public class MainPresenterImp implements MainPresenter {
 
     public MainPresenterImp(MainView mainView) {
         this.mainView = mainView;
-        MyApplication.getAppication().getMainComponent().inject(this);
+        MyApplication.getApplication().getMainComponent().inject(this);
     }
 
     @Override
