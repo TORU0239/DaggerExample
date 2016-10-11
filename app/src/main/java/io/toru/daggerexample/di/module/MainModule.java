@@ -1,7 +1,6 @@
 package io.toru.daggerexample.di.module;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.IOException;
 
@@ -11,13 +10,9 @@ import dagger.Module;
 import dagger.Provides;
 import io.toru.daggerexample.app.MyApplication;
 import io.toru.daggerexample.network.FlickrFetchApi;
-import io.toru.daggerexample.network.NetworkApi;
-import io.toru.daggerexample.pattern.model.PhotoList;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -47,7 +42,7 @@ public class MainModule {
                                         .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl(MyApplication.baseUrl)
+                                .baseUrl(MyApplication.BASE_URL)
                                 .client(okHttpClient)
                                 .addConverterFactory(GsonConverterFactory.create())
                                 .build();

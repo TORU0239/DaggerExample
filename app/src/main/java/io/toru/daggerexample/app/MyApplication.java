@@ -15,7 +15,7 @@ public class MyApplication extends Application {
     private static MyApplication application;
 
     public static final String API_KEY = "4d31be9c8349b2240703d3c35504aa39";
-    public static String baseUrl = "https://api.flickr.com/services/rest/";
+    public static String BASE_URL = "https://api.flickr.com/services/rest/";
 
     private MainComponent mainComponent;
 

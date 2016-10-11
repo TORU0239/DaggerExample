@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import io.toru.daggerexample.app.MyApplication;
 import io.toru.daggerexample.network.FlickrFetchApi;
 import io.toru.daggerexample.pattern.model.PhotoJsonItem;
-import io.toru.daggerexample.pattern.model.PhotoList;
 import io.toru.daggerexample.pattern.view.MainView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +39,9 @@ public class MainPresenterImp implements MainPresenter {
                 if(response.code() == 200){
                     PhotoJsonItem list = response.body();
                     Log.w(TAG, "onResponse: list size :: " + list.photos.photo.size());
+                }
+                else{
+                    // handling exception
                 }
             }
 
