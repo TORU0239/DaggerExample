@@ -7,7 +7,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.toru.daggerexample.R;
-import io.toru.daggerexample.model.QuestionModel;
 
 /**
  * Created by toru on 2016. 10. 3..
@@ -24,7 +23,7 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void updateView(Object model) {
-        QuestionModel eachModel = (QuestionModel)model;
-        mainTextView.setText(eachModel.question);
+//        QuestionModel eachModel = (QuestionModel)model;
+//        mainTextView.setText(eachModel.question);
     }
 }

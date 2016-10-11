@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import io.toru.daggerexample.R;
-import io.toru.daggerexample.model.QuestionModel;
+import io.toru.daggerexample.pattern.model.PhotoItem;
 
 /**
  * Created by toru on 2016. 10. 3..
@@ -17,9 +17,9 @@ import io.toru.daggerexample.model.QuestionModel;
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
     private static final String TAG = MainRecyclerAdapter.class.getSimpleName();
 
-    private List<QuestionModel> listModel;
+    private List<PhotoItem> listModel;
 
-    public MainRecyclerAdapter(List<QuestionModel> listModel) {
+    public MainRecyclerAdapter(List<PhotoItem> listModel) {
         this.listModel = listModel;
     }
 
@@ -36,6 +36,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listModel.size();
+        if (listModel == null) {
+            return 0;
+        } else {
+            return listModel.size();
+        }
     }
 }
