@@ -2,7 +2,7 @@ package io.toru.daggerexample.ui;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import io.toru.daggerexample.R;
 import io.toru.daggerexample.base.activity.BaseActivity;
-import io.toru.daggerexample.pattern.model.PhotoItem;
-import io.toru.daggerexample.pattern.model.PhotoList;
+import io.toru.daggerexample.pattern.model.PhotoThumbnailItem;
+import io.toru.daggerexample.pattern.model.PhotoThumbnailList;
 import io.toru.daggerexample.pattern.presenter.MainPresenter;
 import io.toru.daggerexample.pattern.presenter.MainPresenterImp;
 import io.toru.daggerexample.pattern.view.MainView;
@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements MainView{
 
     private MainRecyclerAdapter adapter;
 
-    private List<PhotoItem> itemList;
+    private List<PhotoThumbnailItem> itemList;
 
     @Override
     public int getLayoutID() {
@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements MainView{
     }
 
     @Override
-    public void onInitView(PhotoList list) {
+    public void onInitView(PhotoThumbnailList list) {
         mainText.setText("18");
         itemList.addAll(list.photo);
         adapter.notifyDataSetChanged();

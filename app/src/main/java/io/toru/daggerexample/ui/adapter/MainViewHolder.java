@@ -1,5 +1,7 @@
 package io.toru.daggerexample.ui.adapter;
 
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,7 +12,8 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.toru.daggerexample.R;
-import io.toru.daggerexample.pattern.model.PhotoItem;
+import io.toru.daggerexample.pattern.model.PhotoThumbnailItem;
+import io.toru.daggerexample.ui.DetailActivity;
 
 /**
  * Created by toru on 2016. 10. 3..
@@ -18,9 +21,13 @@ import io.toru.daggerexample.pattern.model.PhotoItem;
 
 public class MainViewHolder extends RecyclerView.ViewHolder {
 
+    private static final String TAG = MainViewHolder.class.getSimpleName();
+
+    @BindView(R.id.main_cardview)
+    CardView cardView;
+
     @BindView(R.id.thumbnail_image)
     ImageView thumbnailImage;
-
 
     @BindView(R.id.thumbnail_text)
     TextView thumbnailTitleText;
@@ -31,22 +38,17 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void updateView(Object model) {
-        PhotoItem item = (PhotoItem)model;
+        final PhotoThumbnailItem item = (PhotoThumbnailItem)model;
         thumbnailTitleText.setText(item.title);
-
-        StringBuilder urlBuilder = new StringBuilder("https://farm");
-        urlBuilder.append(item.farm)
-                .append(".staticflickr.com/")
-                .append(item.server)
-                .append("/")
-                .append(item.id)
-                .append("_")
-                .append(item.secret)
-                .append("_t.jpg");
-
         Picasso.with(thumbnailImage.getContext())
-                .load(urlBuilder.toString())
+                .load(item.url_t)
                 .fit()
                 .into(thumbnailImage);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.getContext().startActivity(new Intent(v.getContext(), DetailActivity.class).putExtra("url", item.url_t));
+            }
+        });
     }
 }

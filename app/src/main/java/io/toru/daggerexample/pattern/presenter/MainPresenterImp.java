@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import io.toru.daggerexample.app.MyApplication;
 import io.toru.daggerexample.network.FlickrFetchApi;
-import io.toru.daggerexample.pattern.model.PhotoJsonItem;
+import io.toru.daggerexample.pattern.model.PhotoThumbnailJsonItem;
 import io.toru.daggerexample.pattern.view.MainView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,13 +29,13 @@ public class MainPresenterImp implements MainPresenter {
     @Override
     public void onInitAction() {
         Log.w(TAG, "onInitAction: ");
-        Call<PhotoJsonItem> call = api.loadRecentImage();
-        call.enqueue(new Callback<PhotoJsonItem>() {
+        Call<PhotoThumbnailJsonItem> call = api.loadRecentImage();
+        call.enqueue(new Callback<PhotoThumbnailJsonItem>() {
             @Override
-            public void onResponse(Call<PhotoJsonItem> call, retrofit2.Response<PhotoJsonItem> response) {
+            public void onResponse(Call<PhotoThumbnailJsonItem> call, retrofit2.Response<PhotoThumbnailJsonItem> response) {
                 Log.w(TAG, "onResponse: code :: " + response.code());
                 if(response.code() == 200){
-                    PhotoJsonItem list = response.body();
+                    PhotoThumbnailJsonItem list = response.body();
                     Log.w(TAG, "onResponse: list size :: " + list.photos.photo.size());
                     mainView.onInitView(list.photos);
                 }
@@ -46,7 +46,7 @@ public class MainPresenterImp implements MainPresenter {
             }
 
             @Override
-            public void onFailure(Call<PhotoJsonItem> call, Throwable t) {
+            public void onFailure(Call<PhotoThumbnailJsonItem> call, Throwable t) {
                 t.printStackTrace();
             }
         });

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import io.toru.daggerexample.R;
-import io.toru.daggerexample.pattern.model.PhotoItem;
+import io.toru.daggerexample.pattern.model.PhotoThumbnailItem;
 
 /**
  * Created by toru on 2016. 10. 3..
@@ -17,9 +17,9 @@ import io.toru.daggerexample.pattern.model.PhotoItem;
 public class MainRecyclerAdapter extends RecyclerView.Adapter<MainViewHolder> {
     private static final String TAG = MainRecyclerAdapter.class.getSimpleName();
 
-    private List<PhotoItem> listModel;
+    private List<PhotoThumbnailItem> listModel;
 
-    public MainRecyclerAdapter(List<PhotoItem> listModel) {
+    public MainRecyclerAdapter(List<PhotoThumbnailItem> listModel) {
         this.listModel = listModel;
     }
 
