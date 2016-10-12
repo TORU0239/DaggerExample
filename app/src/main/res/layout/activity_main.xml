@@ -10,17 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/main_text"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <Button
-        android:id="@+id/main_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
-        android:text="Test!!"/>
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

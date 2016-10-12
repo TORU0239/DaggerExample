@@ -25,9 +25,6 @@ public class MainActivity extends BaseActivity implements MainView{
 
     private MainPresenter mainPresenter;
 
-    @BindView(R.id.main_text)
-    TextView mainText;
-
     @BindView(R.id.main_recyclerView)
     RecyclerView mainRecyclerView;
 
@@ -49,14 +46,13 @@ public class MainActivity extends BaseActivity implements MainView{
         mainRecyclerView.setAdapter(adapter);
     }
 
-    @OnClick(R.id.main_button)
+    @OnClick(R.id.action_button)
     public void onMainButtonClick(){
         mainPresenter.onInitAction();
     }
 
     @Override
     public void onInitView(PhotoThumbnailList list) {
-        mainText.setText("18");
         itemList.addAll(list.photo);
         adapter.notifyDataSetChanged();
     }

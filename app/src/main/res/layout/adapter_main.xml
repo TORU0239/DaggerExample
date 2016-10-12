@@ -4,6 +4,7 @@
     android:id="@+id/main_cardview"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:foreground="?android:attr/selectableItemBackground"
     card_view:cardCornerRadius="4dp"
     card_view:cardUseCompatPadding="true">
 
