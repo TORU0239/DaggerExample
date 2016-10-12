@@ -30,8 +30,6 @@ public class MainPresenterImp implements MainPresenter {
     public void onInitAction() {
         Log.w(TAG, "onInitAction: ");
         Call<PhotoJsonItem> call = api.loadRecentImage();
-        Log.w(TAG, "onInitAction: url : " + call.request().url().toString());
-
         call.enqueue(new Callback<PhotoJsonItem>() {
             @Override
             public void onResponse(Call<PhotoJsonItem> call, retrofit2.Response<PhotoJsonItem> response) {
@@ -39,9 +37,11 @@ public class MainPresenterImp implements MainPresenter {
                 if(response.code() == 200){
                     PhotoJsonItem list = response.body();
                     Log.w(TAG, "onResponse: list size :: " + list.photos.photo.size());
+                    mainView.onInitView(list.photos);
                 }
                 else{
                     // handling exception
+                    mainView.onInitView();
                 }
             }
 
@@ -50,7 +50,5 @@ public class MainPresenterImp implements MainPresenter {
                 t.printStackTrace();
             }
         });
-
-        mainView.onInitView();
     }
 }

@@ -25,7 +25,7 @@ public class MyApplication extends Application {
         application = this;
         mainComponent = DaggerMainComponent.builder()
                                             .mainModule(new MainModule(this))
-                                            .secondMainModule(new SecondMainModule(this))
+//                                            .secondMainModule(new SecondMainModule(this))
                                             .build();
     }
 

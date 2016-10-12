@@ -6,14 +6,26 @@
     android:layout_height="100dp"
     card_view:cardCornerRadius="4dp"
     card_view:cardUseCompatPadding="true">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
-        <TextView
-            android:id="@+id/adapter_text"
+        <ImageView
+            android:id="@+id/thumbnail_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"/>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="test -_-"/>
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/thumbnail_image">
+            <TextView
+                android:id="@+id/thumbnail_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
