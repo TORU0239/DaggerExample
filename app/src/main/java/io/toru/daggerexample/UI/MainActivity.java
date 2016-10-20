@@ -2,8 +2,6 @@ package io.toru.daggerexample.ui;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +57,5 @@ public class MainActivity extends BaseActivity implements MainView{
 
     @Override
     public void onInitView() {
-
     }
 }
